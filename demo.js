@@ -10,7 +10,7 @@ const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 export default function CheckboxesTags() {
   const [films, setMore] = React.useState(top100Films);
-  const [mfilms, setMoref] = React.useState([]);
+  
   return (
     <Autocomplete
       multiple
@@ -34,12 +34,13 @@ export default function CheckboxesTags() {
         <TextField {...params} label="Checkboxes" placeholder="Favorites" />
       )}
       ListboxComponent={(props) => {
+        const [mfilms, setMoref] = React.useState([]);
         const { children, role } = props;
         return (
           <div {...props}>
             {children}
             {mfilms.map((option) => (
-              <li>{option.title}</li>
+              <Button onClick={()=>console.log(option.title)}>{option.title}</Button>
             ))}
 
             <Button
