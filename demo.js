@@ -10,6 +10,7 @@ const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 export default function CheckboxesTags() {
   const [films, setMore] = React.useState(top100Films);
+  const [mfilms, setMoref] = React.useState([]);
   return (
     <Autocomplete
       multiple
@@ -19,12 +20,12 @@ export default function CheckboxesTags() {
       getOptionLabel={(option) => option.title}
       renderOption={(props, option, { selected }) => (
         <li {...props}>
-          <Checkbox
+          {/* <Checkbox
             icon={icon}
             checkedIcon={checkedIcon}
             style={{ marginRight: 8 }}
             checked={selected}
-          />
+          /> */}
           {option.title}
         </li>
       )}
@@ -33,12 +34,17 @@ export default function CheckboxesTags() {
         <TextField {...params} label="Checkboxes" placeholder="Favorites" />
       )}
       ListboxComponent={(props) => {
+        const { children, role } = props;
         return (
           <div {...props}>
-            {props.children}
+            {children}
+            {mfilms.map((option) => (
+              <li>{option.title}</li>
+            ))}
+
             <Button
               variant="outlined"
-              onclick={() => {
+              onClick={() => {
                 const morefilm = [
                   { title: 'Pulp Fiction', year: 1994 },
                   {
@@ -48,7 +54,7 @@ export default function CheckboxesTags() {
                   { title: 'The Good, the Bad and the Ugly', year: 1966 },
                   { title: 'Fight Club', year: 1999 },
                 ];
-                setMore([...films, ...morefilm]);
+                setMoref([...films, ...morefilm]);
               }}
             >
               add
