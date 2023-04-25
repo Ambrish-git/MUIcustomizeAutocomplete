@@ -16,6 +16,7 @@ export default function CheckboxesTags() {
       multiple
       id="checkboxes-tags-demo"
       options={films}
+      freeSolo
       disableCloseOnSelect
       getOptionLabel={(option) => option.title}
       renderOption={(props, option, { selected }) => (
