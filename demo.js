@@ -10,7 +10,7 @@ const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 export default function CheckboxesTags() {
   const [films, setMore] = React.useState(top100Films);
-  
+
   return (
     <Autocomplete
       multiple
@@ -40,9 +40,9 @@ export default function CheckboxesTags() {
           <div {...props}>
             {children}
             {mfilms.map((option) => (
-              <Button onClick={()=>console.log(option.title)}>{option.title}</Button>
+              <li onClick={() => console.log(option.title)}>{option.title}</li>
             ))}
-
+            
             <Button
               variant="outlined"
               onClick={() => {
@@ -56,6 +56,7 @@ export default function CheckboxesTags() {
                   { title: 'Fight Club', year: 1999 },
                 ];
                 setMoref([...films, ...morefilm]);
+                // setMore([...films, ...morefilm]);
               }}
             >
               add
